@@ -39,8 +39,9 @@ pipeline {
           //enable remote triggers
           properties([pipelineTriggers([pollSCM('* * * * *')])])
           // binaries - host machine
-            sh 'rm -rf /var/www/staging/html/*'
-            sh 'cp -r index.html /var/www/staging/html/'
+            sh 'npm install'
+            sh 'ssh ubuntu@3.15.210.81 "rm -rf /usr/src/app/*"'
+            sh 'scp -r * ubuntu@52.34.212.214:/usr/src/app/'
         } // script
       } // steps
     } // stage
@@ -53,9 +54,9 @@ pipeline {
         script {
             //enable remote triggers
             properties([pipelineTriggers([pollSCM('* * * * *')])])
-              sh 'npm instal'
-              sh 'rm -rf /var/www/prod/html/*'
-              sh 'cp -r index.html /var/www/prod/html/'
+            sh 'npm install'
+            sh 'ssh ubuntu@3.15.210.81 "rm -rf /usr/src/app/*"'
+            sh 'scp -r * ubuntu@52.34.212.214:/usr/src/app/'
         } // script
       } // steps
     } // stage
