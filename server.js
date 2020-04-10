@@ -11,8 +11,8 @@ app.use(bodyParser.json());
 //setting view engine
 app.set('view engine', 'ejs');
 
-if(app.get('env') == 'production' ){
-    port_no = 3000;
+if(app.get('env') == 'development' ){
+    port_no = 4000;
 }
 
 if(app.get('env') == 'production'){
