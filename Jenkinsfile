@@ -39,6 +39,7 @@ pipeline {
           //enable remote triggers
           properties([pipelineTriggers([pollSCM('* * * * *')])])
           // binaries - host machine
+            sh 'ls'
             sh 'npm install'
             sh 'ssh ubuntu@3.15.210.81 "rm -rf /usr/src/app/*"'
             sh 'scp -r * ubuntu@52.34.212.214:/usr/src/app/'
